@@ -1,0 +1,41 @@
+greetings = ["hello", "hi", "hey", "hey there"]
+questions = ["how are you", "what can you do", "who created you"]
+goodbyes = ["goodbye", "bye", "see you later"]
+thank_you = ["thank you", "thanks", "appreciate it"]
+help_commands = ["help", "what can you tell me", "assist me"]
+
+# Main chatbot function
+def simple_chatbot(input):
+    user = input.lower()  # Converting into lower case
+
+
+    if any(greeting in user for greeting in greetings):
+        return "Hello! How can I help you?"
+
+
+    if any(question in user for question in questions):
+        return "I am a simple chatbot. You can ask me questions or chat with me."
+
+    # Check for goodbyes
+    if any(goodbye in input for goodbye in goodbyes):
+        return "See you again! Have a great day."
+
+    # Check for thank you messages
+    if any(thank in input for thank in thank_you):
+        return "You're welcome! If you have any more questions, feel free to ask."
+
+    # Check for help commands
+    if any(help_command in input for help_command in help_commands):
+        return "I can provide information, answer questions, or just chat. How can I assist you today?"
+
+    # Default response for other queries
+    return "I'm sorry, I don't understand that. Can you put the  question in other way?"
+
+# Main loop to interact with the chatbot
+while True:
+    input = input("You: ")
+    if input.lower() in ["exit", "quit"]:
+        print("Chatbot: Goodbye!")
+        break
+    response = simple_chatbot(input)
+    print("Chatbot:", response)
